@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: ravin
+Build-Jdk: 14.0.2
+Implementation-Title: rcp-common-logger
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: com.hdfc.rcp.logger
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/rcp-common-logger
+Created-By: Maven Integration for Eclipse
+

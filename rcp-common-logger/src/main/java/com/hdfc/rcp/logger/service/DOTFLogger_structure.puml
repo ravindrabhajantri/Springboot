@@ -1,0 +1,233 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "com.hdfc.rcp.logger.service.DOTFLogger",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3197625 { 
+   	label=hdfc
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_1862178902 { 
+   	label=rcp
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   DOTFLogRequest1576110472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DOTFLogRequest</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   custId: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DOTFLogger1830396498[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DOTFLogger</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   request: DOTFLogRequest [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ log(request: DOTFLogRequest)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InterfaceLogRequest1576110472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InterfaceLogRequest</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+InterfaceLogger1830396498[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)InterfaceLogger</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   request: InterfaceLogRequest [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ log(request: InterfaceLogRequest)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MaskingService1295707670[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MaskingService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ mask()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PublisherService1295707670[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PublisherService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ publish()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RCPLogger1843496328[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RCPLogger</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   maskingService: MaskingService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   publisherService: PublisherService [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TransactionalLogRequest1576110472[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TransactionalLogRequest</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+TransactionalLogger1830396498[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)TransactionalLogger</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   request: TransactionalLogRequest [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ log(request: TransactionalLogRequest)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+DOTFLogger1830396498 -> DOTFLogRequest1576110472[label="request
+[0..1]"];
+DOTFLogger1830396498 -> MaskingService1295707670[label="log() -> mask()"];
+DOTFLogger1830396498 -> PublisherService1295707670[label="log() -> publish()"];
+InterfaceLogger1830396498 -> InterfaceLogRequest1576110472[label="request
+[0..1]"];
+InterfaceLogger1830396498 -> MaskingService1295707670[label="log() -> mask()"];
+InterfaceLogger1830396498 -> PublisherService1295707670[label="log() -> publish()"];
+RCPLogger1843496328 -> DOTFLogger1830396498[arrowhead=none, arrowtail=empty, dir=both];
+RCPLogger1843496328 -> InterfaceLogger1830396498[arrowhead=none, arrowtail=empty, dir=both];
+RCPLogger1843496328 -> MaskingService1295707670[label="maskingService
+[0..1]"];
+RCPLogger1843496328 -> PublisherService1295707670[label="publisherService
+[0..1]"];
+RCPLogger1843496328 -> TransactionalLogger1830396498[arrowhead=none, arrowtail=empty, dir=both];
+TransactionalLogger1830396498 -> MaskingService1295707670[label="log() -> mask()"];
+TransactionalLogger1830396498 -> PublisherService1295707670[label="log() -> publish()"];
+TransactionalLogger1830396498 -> TransactionalLogRequest1576110472[label="request
+[0..1]"];
+    
+}
+@enduml
