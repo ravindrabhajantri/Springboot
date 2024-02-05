@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class RCPLogger {
+     protected MaskingService maskingService = new MaskingService();
+     protected PublisherService publisherService = new PublisherService();
+}
+
+
+class DOTFLogger extends RCPLogger {
+    public void log(DOTFLogRequest request);
+}
+
+class InterfaceLogger extends RCPLogger {
+    public void log(InterfaceLogRequest request);
+}
+class TransactionalLogger extends RCPLogger{
+     public void log(TransactionalLogRequest request);
+}
+class MaskingService {
+    public void mask();
+}
+
+class PublisherService {
+    public void publish();
+}
+class HashService {
+    public void hash()
+}
+
+class EncryptionService {
+    public void encrypt();
+}
+MaskingService *- RCPLogger
+PublisherService  *- RCPLogger
+EncryptionService  *- RCPLogger
+HashService *- RCPLogger
+
+TransactionalLogger --> TransactionalLogRequest
+DOTFLogger --> DOTFLogRequest
+InterfaceLogger --> InterfaceLoggerRequest
+
+@enduml
