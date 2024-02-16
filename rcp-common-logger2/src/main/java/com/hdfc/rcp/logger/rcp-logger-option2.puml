@@ -1,0 +1,64 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface RCPLogger<T> {
+    void log(T obj);
+}
+
+abstract AbstractRCPLogger<T> implements RCPLogger {
+    protected boolean isMaskingEnabled;
+    protected boolean isHashingEnabled;
+    protected boolean isEncryptionEnabled;
+    protected boolean isPublishEnabled;
+    MaskingService maskingService = new MaskingService();
+    EncryptionService encryptionService = new EncryptionService();
+    HashService hashService = new HashService();
+    PublisherService publisherService = new PublisherService();
+
+    @Override
+    public void log(T obj);
+}
+
+enum RCPLoggerType {
+    TRANSACTIONAL
+    INTERFACE
+    DOTF
+    public abstract <T> RCPLogger<T> create();
+}
+
+class RCPLoggerFactory {
+    public static <T> RCPLogger<T> getLogger(Class<T> rcpLogRequestType);
+}
+
+RCPLoggerFactory --> TransactionalLogService
+RCPLoggerFactory --> InterfaceLogService
+RCPLoggerFactory --> DOTFLogService
+
+class DOTFLogService implements RCPLogger {
+        isMaskingEnabled = true;
+        isPublishEnabled = true;
+        isEncryptionEnabled = true;
+        isHashingEnabled = true;
+    public DOTFLogService();
+}
+
+class InterfaceLogService implements RCPLogger {
+            isMaskingEnabled = true;
+            isPublishEnabled = true;
+            isEncryptionEnabled = true;
+            isHashingEnabled = true;
+            public InterfaceLogService();
+}
+
+class TransactionalLogService implements RCPLogger {
+            isMaskingEnabled = true;
+            isPublishEnabled = true;
+            isEncryptionEnabled = true;
+            isHashingEnabled = true;
+            public TransactionalLogService();
+}
+
+TransactionalLogService *- MaskingService
+TransactionalLogService *- PublisherService
+TransactionalLogService *- HashService
+@enduml

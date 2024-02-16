@@ -2,13 +2,13 @@ package com.hdfc.rcp.logger.request;
 
 public class DOTFLogRequest {
 
-    private String custId;
+    private String request;
 
-    public String getCustId() {
-        return custId;
+    public String getRequest() {
+        return request;
     }
 
-    public void setCustId(String custId) {
-        this.custId = custId;
+    public void setRequest(String request) {
+        this.request = request;
     }
 }

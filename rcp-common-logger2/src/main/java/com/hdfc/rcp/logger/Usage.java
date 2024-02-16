@@ -11,16 +11,18 @@ public class Usage {
 
     public static void main(String[] args) {
 
-        RCPLogger<TransactionalLogRequest> transactionalLogRequestRCPLogger = RCPLoggerFactory.getLogger(TransactionalLogRequest.class);
-        RCPLogger<InterfaceLogRequest> interfaceLogRequestRCPLogger = RCPLoggerFactory.getLogger(InterfaceLogRequest.class);
-        RCPLogger<DOTFLogRequest> dotfLogRequestRCPLogger = RCPLoggerFactory.getLogger(DOTFLogRequest.class);
 
+        RCPLogger<TransactionalLogRequest> transactionalLogRequestRCPLogger = RCPLoggerFactory.getLogger(TransactionalLogRequest.class);
         TransactionalLogRequest transactionalLogRequest = new TransactionalLogRequest();
         transactionalLogRequestRCPLogger.log(transactionalLogRequest);
-
+        System.out.println("\n");
+        RCPLogger<InterfaceLogRequest> interfaceLogRequestRCPLogger = RCPLoggerFactory.getLogger(InterfaceLogRequest.class);
         InterfaceLogRequest interfaceLogRequest = new InterfaceLogRequest();
         interfaceLogRequestRCPLogger.log(interfaceLogRequest);
+        System.out.println("\n");
+        RCPLogger<DOTFLogRequest> dotfLogRequestRCPLogger = RCPLoggerFactory.getLogger(DOTFLogRequest.class);
         DOTFLogRequest dotfLogRequest = new DOTFLogRequest();
+        dotfLogRequest.setRequest("Test");
         dotfLogRequestRCPLogger.log(dotfLogRequest);
 
 
